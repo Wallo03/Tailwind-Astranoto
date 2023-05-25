@@ -5,12 +5,17 @@ const Navbar = () => {
   const [nav, setNav] = useState (false)
 
   const handleNav = () => {
-      setNav(!nav)
+    //  setNav(!nav)
+    if (nav){
+      setNav(false)
+    }else {
+      setNav(true)
+    }
   }
 
   return (
     <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white">
-      <h1 className='w-full text-3xl font-bold text-[#80BDE3]'>BIRD</h1>
+      <h1 className='w-full text-3xl font-bold text-white'>BIRD {nav ? '1' : '0'}</h1>
       
       <ul className='hidden md:flex'>
           <li className='p-5'>Home</li>
@@ -21,7 +26,10 @@ const Navbar = () => {
       </ul>
 
       <div onClick={handleNav} className='block md:hidden'>
-        {!nav ? <AiOutlineClose size={20}/> : <AiOutlineMenu size={20}/>}
+        {/* {!nav ? <AiOutlineClose size={20}/> : <AiOutlineMenu size={20}/>} */}
+        {nav &&  <AiOutlineMenu size={20}/>}
+        {!nav &&  <AiOutlineClose size={20}/>}
+
         
       </div>
 
